@@ -17,7 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "fastify": "^3.21.3",
-    "fastify-cors": "^6.0.2"
+    "fastify-cors": "^6.0.2",
+    "object-to-xml": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.9.4",
