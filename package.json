@@ -1,0 +1,32 @@
+{
+  "name": "local-sqs",
+  "version": "0.0.0",
+  "description": "Local Mock AWS SQS",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "type-check": "tsc --noEmit",
+    "dev": "nodemon",
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.21.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
