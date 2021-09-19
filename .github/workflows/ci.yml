@@ -27,8 +27,8 @@ jobs:
       - name: Install project dependencies
         run: npm install
 
-      - name: Lint check
-        run: npm run lint
+      - name: Check
+        run: npm run check
 
-      - name: Type check
-        run: npm run type-check
+      - name: Build
+        run: npm run build
