@@ -1,15 +1,15 @@
-// ESM
-import Fastify from 'fastify';
-const fastify = Fastify({
-  logger: true,
-});
+import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import fastifyCors from 'fastify-cors';
+import { Server, IncomingMessage, ServerResponse } from 'http';
 
-fastify.get('/', async (request, reply) => {
-  reply.type('application/json').code(200);
-  return { hello: 'world' };
-});
+export default (
+  fastify: FastifyInstance<Server, IncomingMessage, ServerResponse>,
+  _: FastifyPluginOptions,
+  next: (error?: Error) => void
+) => {
+  fastify.register(fastifyCors, {
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
 
-fastify.listen(3000, (err, address) => {
-  if (err) throw err;
-  // Server is now listening on ${address}
-});
+  next();
+};
