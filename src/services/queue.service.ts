@@ -1,3 +1,4 @@
+import { formatBatchMessage } from '../common/helpers';
 import { Message } from '../models';
 import { queueRepositories } from '../repositories';
 
@@ -19,6 +20,31 @@ const send = (queueName: string, query: Record<string, string>) => {
   };
 };
 
+const sendBatch = (queueName: string, query: Record<string, string>) => {
+  if (Object.values(query).some((value) => !MSG_CONTENT_REGEX.test(value))) {
+    throw new Error('Message contains invalid characters');
+  }
+
+  const messages = formatBatchMessage(query).map(
+    (message) => new Message(message)
+  );
+  queueRepositories.push(queueName, messages);
+
+  return {
+    SendMessageBatchResultEntry: messages.map((message) => ({
+      ...(message.Id && { Id: message.Id }),
+      ...(message.MessageBody && {
+        MD5OfMessageBody: 'fafb00f5732ab283681e124bf8747ed1',
+      }),
+      ...(message.attributes?.length > 0 && {
+        MD5OfMessageAttributes: '3ae8f24a165a8cedc005670c81a27295',
+      }),
+      MessageId: message.id,
+    })),
+  };
+};
+
 export const queueService = {
   send,
+  sendBatch,
 };

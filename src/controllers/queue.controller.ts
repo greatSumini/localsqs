@@ -17,8 +17,11 @@ export const queueController = async (fastify: FastifyInstance) => {
       const { Action: action } = query;
 
       let result: unknown;
-      if (['SendMessage', 'SendMessageBatch'].includes(action)) {
+      if (action === 'SendMessage') {
         result = queueService.send(queueName, query);
+      }
+      if (action === 'SendMessageBatch') {
+        result = queueService.sendBatch(queueName, query);
       }
 
       if (result) {

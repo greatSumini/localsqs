@@ -3,8 +3,13 @@ import { getRandomUuid } from '../common/helpers';
 export class Message {
   id: string;
 
-  constructor(attributes: unknown) {
+  Id?: string;
+  MessageBody?: string;
+
+  attributes?: Array<{ Name: string; Value: string }>;
+
+  constructor(attributes: any) {
     Object.assign(this, attributes);
-    this.id = getRandomUuid();
+    this.id = attributes.id ?? getRandomUuid();
   }
 }
