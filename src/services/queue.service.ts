@@ -1,6 +1,6 @@
 import { formatBatchMessage } from '../common';
 import { Message } from '../models';
-import { queueRepositories } from '../repositories';
+import { queueRepository } from '../repositories';
 
 const checkMessageContent = (query: Record<string, string>) => {
   const MSG_CONTENT_REGEX =
@@ -15,7 +15,7 @@ const send = (queueName: string, query: Record<string, string>) => {
   checkMessageContent(query);
 
   const message = new Message(query);
-  queueRepositories.push(queueName, message);
+  queueRepository.push(queueName, message);
 
   return message.toResponse();
 };
@@ -26,7 +26,7 @@ const sendBatch = (queueName: string, query: Record<string, string>) => {
   const messages = formatBatchMessage(query).map(
     (message) => new Message(message)
   );
-  queueRepositories.push(queueName, messages);
+  queueRepository.push(queueName, messages);
 
   return {
     SendMessageBatchResultEntry: messages.map((message) =>
