@@ -1,4 +1,4 @@
-import { formatBatchMessage } from '../common/helpers';
+import { formatBatchMessage } from '../common';
 import { Message } from '../models';
 import { queueRepositories } from '../repositories';
 

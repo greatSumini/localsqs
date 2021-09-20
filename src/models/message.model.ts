@@ -1,4 +1,4 @@
-import { getRandomUuid } from '../common/helpers';
+import { getRandomUuid } from '../common';
 
 export class Message {
   id: string;

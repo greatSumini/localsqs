@@ -1,8 +1,6 @@
 import { FastifyInstance, FastifyReply } from 'fastify';
 
-import { responseSerializer } from '../common/serializers';
-import { SqsAction } from '../common/types';
-
+import { responseSerializer, SqsAction } from '../common';
 import { queueService } from '../services';
 
 export const queueController = async (fastify: FastifyInstance) => {
