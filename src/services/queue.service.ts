@@ -13,6 +13,8 @@ const send = (queueName: string, query: Record<string, string>) => {
   queueRepositories.push(queueName, message);
 
   return {
+    MD5OfMessageBody: 'fafb00f5732ab283681e124bf8747ed1',
+    MD5OfMessageAttributes: '3ae8f24a165a8cedc005670c81a27295',
     MessageId: message.id,
   };
 };
