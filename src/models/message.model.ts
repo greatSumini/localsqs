@@ -25,4 +25,18 @@ export class Message {
       MessageId: this.id,
     };
   }
+
+  toOutput() {
+    return {
+      ...(this.MessageBody && {
+        MD5OfBody: 'fafb00f5732ab283681e124bf8747ed1',
+        Body: this.MessageBody,
+      }),
+      ...(this.attributes?.length > 0 && {
+        Attribute: this.attributes,
+      }),
+      MessageId: this.id,
+      ReceiptHandle: getRandomUuid(),
+    };
+  }
 }

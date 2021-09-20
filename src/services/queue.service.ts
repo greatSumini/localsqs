@@ -35,7 +35,18 @@ const sendBatch = (queueName: string, query: Record<string, string>) => {
   };
 };
 
+const receive = (queueName: string, query: Record<string, string>) => {
+  const { MaxNumberOfMessages = 1 } = query;
+
+  const messages = queueRepository.pop(queueName, Number(MaxNumberOfMessages));
+
+  return {
+    Message: messages.map((message) => message.toOutput()),
+  };
+};
+
 export const queueService = {
   send,
   sendBatch,
+  receive,
 };
