@@ -1,8 +1,7 @@
 import { FastifyInstance } from 'fastify';
 
-import { appController, queueController } from './controllers';
+import { appController } from './controllers';
 
 export default async function router(fastify: FastifyInstance) {
   fastify.register(appController);
-  fastify.register(queueController);
 }
