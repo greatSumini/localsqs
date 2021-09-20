@@ -2,13 +2,17 @@ import { formatBatchMessage } from '../common/helpers';
 import { Message } from '../models';
 import { queueRepositories } from '../repositories';
 
-const MSG_CONTENT_REGEX =
-  /^[\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]*$/;
+const checkMessageContent = (query: Record<string, string>) => {
+  const MSG_CONTENT_REGEX =
+    /^[\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]*$/;
 
-const send = (queueName: string, query: Record<string, string>) => {
   if (Object.values(query).some((value) => !MSG_CONTENT_REGEX.test(value))) {
     throw new Error('Message contains invalid characters');
   }
+};
+
+const send = (queueName: string, query: Record<string, string>) => {
+  checkMessageContent(query);
 
   const message = new Message(query);
   queueRepositories.push(queueName, message);
@@ -21,9 +25,7 @@ const send = (queueName: string, query: Record<string, string>) => {
 };
 
 const sendBatch = (queueName: string, query: Record<string, string>) => {
-  if (Object.values(query).some((value) => !MSG_CONTENT_REGEX.test(value))) {
-    throw new Error('Message contains invalid characters');
-  }
+  checkMessageContent(query);
 
   const messages = formatBatchMessage(query).map(
     (message) => new Message(message)
