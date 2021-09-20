@@ -35,8 +35,12 @@ const sendBatch = (queueName: string, query: Record<string, string>) => {
   };
 };
 
-const receive = (queueName: string, query: Record<string, string>) => {
-  const { MaxNumberOfMessages = 1 } = query;
+const receive = async (queueName: string, query: Record<string, string>) => {
+  const { MaxNumberOfMessages = '1', WaitTimeSeconds = '20' } = query;
+
+  await new Promise((resolve) =>
+    setTimeout(resolve, Number(WaitTimeSeconds) * 1000)
+  );
 
   const messages = queueRepository.pop(queueName, Number(MaxNumberOfMessages));
 
