@@ -17,11 +17,7 @@ const send = (queueName: string, query: Record<string, string>) => {
   const message = new Message(query);
   queueRepositories.push(queueName, message);
 
-  return {
-    MD5OfMessageBody: 'fafb00f5732ab283681e124bf8747ed1',
-    MD5OfMessageAttributes: '3ae8f24a165a8cedc005670c81a27295',
-    MessageId: message.id,
-  };
+  return message.toResponse();
 };
 
 const sendBatch = (queueName: string, query: Record<string, string>) => {
@@ -33,16 +29,9 @@ const sendBatch = (queueName: string, query: Record<string, string>) => {
   queueRepositories.push(queueName, messages);
 
   return {
-    SendMessageBatchResultEntry: messages.map((message) => ({
-      ...(message.Id && { Id: message.Id }),
-      ...(message.MessageBody && {
-        MD5OfMessageBody: 'fafb00f5732ab283681e124bf8747ed1',
-      }),
-      ...(message.attributes?.length > 0 && {
-        MD5OfMessageAttributes: '3ae8f24a165a8cedc005670c81a27295',
-      }),
-      MessageId: message.id,
-    })),
+    SendMessageBatchResultEntry: messages.map((message) =>
+      message.toResponse()
+    ),
   };
 };
 
