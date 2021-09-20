@@ -17,7 +17,7 @@ export const appController = async (fastify: FastifyInstance) => {
 
     const queueName = QueueUrl.split('/').reverse()[0];
 
-    let result: unknown;
+    let result: any;
     if (action === 'SendMessage') {
       result = queueService.send(queueName, body);
     }
@@ -25,7 +25,18 @@ export const appController = async (fastify: FastifyInstance) => {
       result = queueService.sendBatch(queueName, body);
     }
     if (action === 'ReceiveMessage') {
-      result = queueService.receive(queueName, body);
+      result = await queueService.receive(queueName, body);
+    }
+
+    if (action === 'ReceiveMessage') {
+      if (result.Message?.length > 0) {
+        fastify.log.info(
+          `ReceiveMessage to ${queueName} (${result.Message?.length})`
+        );
+      }
+    }
+    if (action !== 'ReceiveMessage') {
+      fastify.log.info(action + ' to ' + queueName);
     }
 
     if (result) {

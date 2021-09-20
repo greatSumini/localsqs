@@ -6,7 +6,11 @@ const ip = process.env.IP || 'localhost';
 
 const fastify = Fastify({
   ignoreTrailingSlash: true,
-  logger: true,
+  disableRequestLogging: true,
+  logger: {
+    level: 'info',
+    prettyPrint: true,
+  },
 });
 
 fastify.register(app);
