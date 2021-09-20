@@ -10,5 +10,5 @@ export const responseSerializer = (name: string, res: unknown) => {
         RequestId: getRandomUuid(),
       },
     },
-  });
+  }).replace(/&#34;/g, '"');
 };
