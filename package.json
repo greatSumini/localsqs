@@ -19,6 +19,7 @@
   "dependencies": {
     "fastify": "^3.21.3",
     "fastify-cors": "^6.0.2",
+    "fastify-formbody": "^5.1.0",
     "object-to-xml": "^2.0.0"
   },
   "devDependencies": {
