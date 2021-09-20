@@ -20,11 +20,12 @@
     "fastify": "^3.21.3",
     "fastify-cors": "^6.0.2",
     "fastify-formbody": "^5.1.0",
-    "object-to-xml": "^2.0.0"
+    "md5": "^2.3.0",
   },
   "devDependencies": {
     "@types/faker": "^5.5.8",
     "@types/jest": "^27.0.1",
+    "@types/md5": "^2.3.1",
     "@types/node": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
