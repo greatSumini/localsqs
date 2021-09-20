@@ -1,4 +1,4 @@
-export const formatMessage = (data: Record<string, string>) => {
+export const formatMessage = (data: Record<string, unknown>) => {
   const result: Record<string, unknown> & {
     attributes: unknown[];
   } = {
