@@ -21,6 +21,9 @@ export const queueController = async (fastify: FastifyInstance) => {
       if (action === 'SendMessageBatch') {
         result = queueService.sendBatch(queueName, query);
       }
+      if (action === 'ReceiveMessage') {
+        result = queueService.receive(queueName, query);
+      }
 
       if (result) {
         reply.send(responseSerializer(action, result));
