@@ -30,15 +30,15 @@ export class Message {
 
   toOutput() {
     return {
+      MessageId: this.id,
+      ReceiptHandle: getRandomUuid(),
       ...(this.MessageBody && {
-        MD5OfBody: 'fafb00f5732ab283681e124bf8747ed1',
+        MD5OfBody: md5(this.MessageBody),
         Body: this.MessageBody,
       }),
       ...(this.attributes?.length > 0 && {
         Attribute: this.attributes,
       }),
-      MessageId: this.id,
-      ReceiptHandle: getRandomUuid(),
     };
   }
 }
