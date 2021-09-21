@@ -1,0 +1,11 @@
+.github
+dist
+node_modules
+
+*eslint*
+*git*
+*prettier*
+jest*
+nodemon.json
+
+npm-debug.log
