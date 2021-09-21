@@ -33,6 +33,9 @@ export const appController = async (fastify: FastifyInstance) => {
     if (action === 'DeleteMessage') {
       result = queueService.deleteMessage(queueName, body);
     }
+    if (action === 'DeleteMessageBatch') {
+      result = queueService.deleteMessageBatch(queueName, body);
+    }
 
     // log //
 
