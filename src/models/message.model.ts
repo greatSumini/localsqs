@@ -7,6 +7,7 @@ export class Message {
 
   Id?: string;
   MessageBody?: string;
+  ReceiptHandle?: string;
 
   attributes?: Array<{ Name: string; Value: string }>;
 
@@ -29,9 +30,11 @@ export class Message {
   }
 
   toOutput() {
+    this.ReceiptHandle = getRandomUuid();
+
     return {
       MessageId: this.id,
-      ReceiptHandle: getRandomUuid(),
+      ReceiptHandle: this.ReceiptHandle,
       ...(this.MessageBody && {
         MD5OfBody: md5(this.MessageBody),
         Body: this.MessageBody,
