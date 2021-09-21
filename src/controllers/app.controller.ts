@@ -47,11 +47,8 @@ export const appController = async (fastify: FastifyInstance) => {
       fastify.log.info(action + ' to ' + queueName);
     }
 
-    if (result) {
-      reply
-        .type('text/html; charset=utf-8')
-        .send(responseSerializer(action, result));
-    } else {
-    }
+    reply
+      .type('text/html; charset=utf-8')
+      .send(responseSerializer(action, result));
   });
 };
