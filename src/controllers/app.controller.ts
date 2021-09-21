@@ -31,7 +31,7 @@ export const appController = async (fastify: FastifyInstance) => {
       result = await queueService.receive(queueName, body);
     }
     if (action === 'DeleteMessage') {
-      result = await queueService.deleteMessage(queueName, body);
+      result = queueService.deleteMessage(queueName, body);
     }
 
     // log //
