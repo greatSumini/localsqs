@@ -5,7 +5,7 @@ import { queueService } from './queue.service';
 describe('queueService', () => {
   const setUp = () => {
     const queueName = faker.lorem.word();
-    const body = {
+    const sendBatchBody = {
       Action: 'SendMessageBatch',
       QueueUrl: `http://localhost:4413/896943254900/${queueName}`,
       'SendMessageBatchRequestEntry.1.Id':
@@ -15,13 +15,23 @@ describe('queueService', () => {
       Version: '2012-11-05',
     };
 
-    return { queueName, body };
+    return { queueName, sendBatchBody };
   };
 
-  it('should receive sent message', async () => {
-    const { queueName, body } = setUp();
+  const getDeleteBatchBody = (rh1: string, rh2: string) => ({
+    Action: 'DeleteMessageBatch',
+    'DeleteMessageBatchRequestEntry.1.Id': 'msg1',
+    'DeleteMessageBatchRequestEntry.1.ReceiptHandle': rh1,
+    'DeleteMessageBatchRequestEntry.2.Id': 'msg2',
+    'DeleteMessageBatchRequestEntry.2.ReceiptHandle': rh2,
+    Expires: '2020-10-18T22%3A52%3A43PST',
+    Version: '2012-11-05',
+  });
 
-    queueService.sendBatch(queueName, body);
+  it('should receive sent message', async () => {
+    const { queueName, sendBatchBody } = setUp();
+
+    queueService.sendBatch(queueName, sendBatchBody);
     const result = await queueService.receive(queueName, {
       WaitTimeSeconds: '0',
     });
@@ -30,9 +40,9 @@ describe('queueService', () => {
   });
 
   it('deleteMessage success', async () => {
-    const { queueName, body } = setUp();
+    const { queueName, sendBatchBody } = setUp();
 
-    queueService.sendBatch(queueName, body);
+    queueService.sendBatch(queueName, sendBatchBody);
     const received = await queueService.receive(queueName, {
       WaitTimeSeconds: '0',
     });
@@ -44,6 +54,42 @@ describe('queueService', () => {
     });
 
     expect(received.Message.length).toEqual(1);
+    expect(result.Message.length).toEqual(0);
+  });
+
+  it('deleteMessageBatch success', async () => {
+    const { queueName, sendBatchBody } = setUp();
+
+    queueService.sendBatch(queueName, sendBatchBody);
+    queueService.sendBatch(queueName, sendBatchBody);
+    const received = await queueService.receive(queueName, {
+      MaxNumberOfMessages: '10',
+      WaitTimeSeconds: '0',
+    });
+
+    expect(received.Message.length).toEqual(2);
+
+    const deleteBatchBody = getDeleteBatchBody(
+      received.Message[0].ReceiptHandle,
+      received.Message[1].ReceiptHandle
+    );
+
+    const deleteBatchResult = queueService.deleteMessageBatch(
+      queueName,
+      deleteBatchBody
+    );
+    const result = await queueService.receive(queueName, {
+      MaxNumberOfMessages: '10',
+      WaitTimeSeconds: '0',
+    });
+
+    expect(deleteBatchResult.DeleteMessageBatchResultEntry.length).toEqual(2);
+    expect(deleteBatchResult.DeleteMessageBatchResultEntry[0].Id).toEqual(
+      deleteBatchBody['DeleteMessageBatchRequestEntry.1.Id']
+    );
+    expect(deleteBatchResult.DeleteMessageBatchResultEntry[1].Id).toEqual(
+      deleteBatchBody['DeleteMessageBatchRequestEntry.2.Id']
+    );
     expect(result.Message.length).toEqual(0);
   });
 });

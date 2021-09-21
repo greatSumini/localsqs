@@ -56,8 +56,21 @@ const deleteMessage = (queueName: string, body: Record<string, string>) => {
   if (!ReceiptHandle) {
     throw new Error('ReceiptHandle must be provided');
   }
-
   queueRepository.deleteMessage(queueName, ReceiptHandle);
+};
+
+const deleteMessageBatch = (
+  queueName: string,
+  body: Record<string, string>
+) => {
+  const entries = formatBatchMessage(body);
+  entries.forEach((entry) => {
+    queueRepository.deleteMessage(queueName, entry.ReceiptHandle as string);
+  });
+
+  return {
+    DeleteMessageBatchResultEntry: entries.map((entry) => ({ Id: entry.Id })),
+  };
 };
 
 export const queueService = {
@@ -65,4 +78,5 @@ export const queueService = {
   sendBatch,
   receive,
   deleteMessage,
+  deleteMessageBatch,
 };
