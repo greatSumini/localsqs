@@ -7,6 +7,7 @@
     "check:lint": "eslint \"src/**/*.ts\" --fix",
     "check:type": "tsc --noEmit",
     "check:test": "jest",
+    "check:test:coverage": "jest --coverage",
     "check": "run-p check:*",
     "dev": "nodemon",
     "prebuild": "rimraf dist",
