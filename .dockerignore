@@ -7,5 +7,6 @@ node_modules
 *prettier*
 jest*
 nodemon.json
+*.md
 
 npm-debug.log
