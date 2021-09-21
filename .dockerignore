@@ -8,5 +8,6 @@ node_modules
 jest*
 nodemon.json
 *.md
+!README.md
 
 npm-debug.log
