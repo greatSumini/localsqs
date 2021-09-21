@@ -40,7 +40,9 @@ export const appController = async (fastify: FastifyInstance) => {
     }
 
     if (result) {
-      reply.send(responseSerializer(action, result));
+      reply
+        .type('text/html; charset=utf-8')
+        .send(responseSerializer(action, result));
     } else {
     }
   });
