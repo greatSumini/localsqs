@@ -42,7 +42,9 @@ const receive = async (queueName: string, query: Record<string, string>) => {
     setTimeout(resolve, Number(WaitTimeSeconds) * 1000)
   );
 
-  const messages = queueRepository.pop(queueName, Number(MaxNumberOfMessages));
+  const messages = queueRepository
+    .get(queueName)
+    .messages.slice(0, Number(MaxNumberOfMessages));
 
   return {
     Message: messages.map((message) => message.toOutput()),
