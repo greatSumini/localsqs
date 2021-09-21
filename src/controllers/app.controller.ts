@@ -18,6 +18,9 @@ export const appController = async (fastify: FastifyInstance) => {
     const queueName = QueueUrl.split('/').reverse()[0];
 
     let result: any;
+
+    // execute service methods //
+
     if (action === 'SendMessage') {
       result = queueService.send(queueName, body);
     }
@@ -27,6 +30,11 @@ export const appController = async (fastify: FastifyInstance) => {
     if (action === 'ReceiveMessage') {
       result = await queueService.receive(queueName, body);
     }
+    if (action === 'DeleteMessage') {
+      result = await queueService.deleteMessage(queueName, body);
+    }
+
+    // log //
 
     if (action === 'ReceiveMessage') {
       if (result.Message?.length > 0) {
