@@ -28,4 +28,22 @@ describe('queueService', () => {
 
     expect(result.Message.length).toEqual(1);
   });
+
+  it('deleteMessage success', async () => {
+    const { queueName, body } = setUp();
+
+    queueService.sendBatch(queueName, body);
+    const received = await queueService.receive(queueName, {
+      WaitTimeSeconds: '0',
+    });
+    queueService.deleteMessage(queueName, {
+      ReceiptHandle: received.Message[0].ReceiptHandle,
+    });
+    const result = await queueService.receive(queueName, {
+      WaitTimeSeconds: '0',
+    });
+
+    expect(received.Message.length).toEqual(1);
+    expect(result.Message.length).toEqual(0);
+  });
 });

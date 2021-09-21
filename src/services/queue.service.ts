@@ -51,8 +51,21 @@ const receive = async (queueName: string, query: Record<string, string>) => {
   };
 };
 
+const deleteMessage = async (
+  queueName: string,
+  body: Record<string, string>
+) => {
+  const { ReceiptHandle } = body;
+  if (!ReceiptHandle) {
+    throw new Error('ReceiptHandle must be provided');
+  }
+
+  queueRepository.deleteMessage(queueName, ReceiptHandle);
+};
+
 export const queueService = {
   send,
   sendBatch,
   receive,
+  deleteMessage,
 };

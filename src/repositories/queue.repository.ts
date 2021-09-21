@@ -39,8 +39,18 @@ const pop = (name: string, _amount?: number) => {
   return queue.messages.splice(0, amount);
 };
 
+const deleteMessage = (name: string, ReceiptHandle: string) => {
+  const queue = get(name);
+  const index = queue.messages.findIndex(
+    (v) => v.ReceiptHandle === ReceiptHandle
+  );
+
+  return queue.messages.splice(index, 1);
+};
+
 export const queueRepository = {
   get,
   push,
   pop,
+  deleteMessage,
 };
