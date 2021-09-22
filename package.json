@@ -1,8 +1,7 @@
 {
   "name": "local-sqs",
   "version": "0.1.1",
-  "description": "Local Mock AWS SQS",
-  "main": "index.js",
+  "description": "Develop and test your server with Offline AWS SQS!",
   "scripts": {
     "check:lint": "eslint \"src/**/*.ts\" --fix",
     "check:type": "tsc --noEmit",
@@ -16,7 +15,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^10.0.0",
     "fastify": "^3.21.3",
