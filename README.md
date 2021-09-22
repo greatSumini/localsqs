@@ -23,6 +23,9 @@
   <a aria-label="codecov coverage" href="https://app.codecov.io/gh/greatSumini/local-sqs/">
     <img src="https://img.shields.io/codecov/c/gh/greatSumini/local-sqs">
   </a>
+  <a aria-label="docker image size" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
+    <img src="https://img.shields.io/docker/image-size/greatsumini/local-sqs">
+  </a>
   <a aria-label="docker pulls" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
     <img src="https://img.shields.io/docker/pulls/greatsumini/local-sqs">
   </a>
