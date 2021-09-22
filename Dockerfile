@@ -1,21 +1,32 @@
-FROM node:16
-MAINTAINER greatSumini@gmail.com
+FROM node:16-alpine as development
 
-# create app dir
 WORKDIR /usr/src/app
 
-# copy package.json/package-lock.json, install dependencies
 COPY package*.json ./
-RUN npm install
 
-ENV PORT=4413
-ENV IP="0.0.0.0"
+RUN npm install --only=development
 
-# copy app source
 COPY . .
 
 RUN npm run build
 
-EXPOSE 4413
+FROM node:16-alpine as production
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install --only=production
+
+COPY . .
+
+COPY --from=development /usr/src/app/dist ./dist
+
+ARG PORT=4413
+ENV PORT=${PORT}
+ARG IP="0.0.0.0"
+ENV IP=${IP}
+
+LABEL authors="greatSumini@gmail.com"
 
 CMD [ "node", "dist/main" ]
