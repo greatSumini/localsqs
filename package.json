@@ -1,6 +1,6 @@
 {
   "name": "local-sqs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local Mock AWS SQS",
   "main": "index.js",
   "scripts": {
