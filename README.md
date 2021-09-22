@@ -11,15 +11,29 @@
   <a aria-label="license" href="https://github.com/greatSumini/local-sqs/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/greatSumini/local-sqs?style=for-the-badge&labelColor=000000">
   </a>
-  <a aria-label="CI" href="https://github.com/greatSumini/local-sqs/actions/workflows/ci.yml">
-    <img src="https://img.shields.io/github/workflow/status/greatSumini/local-sqs/CI?label=CI&style=for-the-badge&labelColor=000000">
-  </a>
   <a aria-label="Docker Hub" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
     <img alt="" src="https://img.shields.io/badge/DOCKER%20HUB-skyblue.svg?style=for-the-badge&logoWidth=20&logo=Docker&logoColor=000000">
   </a>
 </p>
 
+<p align="center">
+  <a aria-label="CI" href="https://github.com/greatSumini/local-sqs/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/workflow/status/greatSumini/local-sqs/CI?label=CI&labelColor=000000">
+  </a>
+  <a aria-label="codecov coverage" href="https://app.codecov.io/gh/greatSumini/local-sqs/">
+    <img src="https://img.shields.io/codecov/c/gh/greatSumini/local-sqs">
+  </a>
+  <a aria-label="docker pulls" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
+    <img src="https://img.shields.io/docker/pulls/greatsumini/local-sqs">
+  </a>
+  <a aria-label="github stars" href="https://github.com/greatSumini/local-sqs">
+    <img src="https://img.shields.io/github/stars/greatsumini/local-sqs?style=social">
+  </a>
+</p>
+
 Develop and test your server with Offline [AWS SQS](https://aws.amazon.com/sqs/)!
+
+Built with ![fastify](https://img.shields.io/badge/fastify-%23000000.svg?logo=fastify&logoColor=white), ![typescript](https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white)
 
 ## 1. Getting Started
 
