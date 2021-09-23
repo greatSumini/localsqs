@@ -5,32 +5,32 @@
 <h1 align="center">Local <a href="https://aws.amazon.com/sqs/" target="_blank">SQS</a></h1>
 
 <p align="center">
-  <a aria-label="version" href="https://github.com/greatSumini/local-sqs">
-    <img src="https://img.shields.io/github/package-json/v/greatSumini/local-sqs?style=for-the-badge&labelColor=000000">
+  <a aria-label="version" href="https://github.com/greatSumini/localsqs">
+    <img src="https://img.shields.io/github/package-json/v/greatSumini/localsqs?style=for-the-badge&labelColor=000000">
   </a>
-  <a aria-label="license" href="https://github.com/greatSumini/local-sqs/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/greatSumini/local-sqs?style=for-the-badge&labelColor=000000">
+  <a aria-label="license" href="https://github.com/greatSumini/localsqs/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/greatSumini/localsqs?style=for-the-badge&labelColor=000000">
   </a>
-  <a aria-label="Docker Hub" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
+  <a aria-label="Docker Hub" href="https://hub.docker.com/repository/docker/greatsumini/localsqs">
     <img alt="" src="https://img.shields.io/badge/DOCKER%20HUB-skyblue.svg?style=for-the-badge&logoWidth=20&logo=Docker&logoColor=000000">
   </a>
 </p>
 
 <p align="center">
-  <a aria-label="CI" href="https://github.com/greatSumini/local-sqs/actions/workflows/ci.yml">
-    <img src="https://img.shields.io/github/workflow/status/greatSumini/local-sqs/CI?label=CI&labelColor=000000">
+  <a aria-label="CI" href="https://github.com/greatSumini/localsqs/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/workflow/status/greatSumini/localsqs/CI?label=CI&labelColor=000000">
   </a>
-  <a aria-label="codecov coverage" href="https://app.codecov.io/gh/greatSumini/local-sqs/">
-    <img src="https://img.shields.io/codecov/c/gh/greatSumini/local-sqs">
+  <a aria-label="codecov coverage" href="https://app.codecov.io/gh/greatSumini/localsqs/">
+    <img src="https://img.shields.io/codecov/c/gh/greatSumini/localsqs">
   </a>
-  <a aria-label="docker image size" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
-    <img src="https://img.shields.io/docker/image-size/greatsumini/local-sqs">
+  <a aria-label="docker image size" href="https://hub.docker.com/repository/docker/greatsumini/localsqs">
+    <img src="https://img.shields.io/docker/image-size/greatsumini/localsqs">
   </a>
-  <a aria-label="docker pulls" href="https://hub.docker.com/repository/docker/greatsumini/local-sqs">
-    <img src="https://img.shields.io/docker/pulls/greatsumini/local-sqs">
+  <a aria-label="docker pulls" href="https://hub.docker.com/repository/docker/greatsumini/localsqs">
+    <img src="https://img.shields.io/docker/pulls/greatsumini/localsqs">
   </a>
-  <a aria-label="github stars" href="https://github.com/greatSumini/local-sqs">
-    <img src="https://img.shields.io/github/stars/greatsumini/local-sqs?style=social">
+  <a aria-label="github stars" href="https://github.com/greatSumini/localsqs">
+    <img src="https://img.shields.io/github/stars/greatsumini/localsqs?style=social">
   </a>
 </p>
 
@@ -44,8 +44,8 @@ Built with ![fastify](https://img.shields.io/badge/fastify-%23000000.svg?logo=fa
 
 ```shell
 # clone this repository
-git clone https://github.com/DEV-MUGLES/local-sqs.git
-cd local-sqs
+git clone https://github.com/DEV-MUGLES/localsqs.git
+cd localsqs
 
 # install dependencies
 npm install
@@ -73,6 +73,6 @@ npm run dev
 
 ## 4. Links
 
-- [GitHub](https://github.com/greatSumini/local-sqs)
-- [Docker Hub](https://hub.docker.com/repository/docker/greatsumini/local-sqs)
+- [GitHub](https://github.com/greatSumini/localsqs)
+- [Docker Hub](https://hub.docker.com/repository/docker/greatsumini/localsqs)
 - [AWS SQS Docs](https://docs.aws.amazon.com/sqs/index.html)
