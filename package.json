@@ -1,6 +1,6 @@
 {
   "name": "localsqs",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Develop and test your server with Offline AWS SQS!",
   "scripts": {
     "check:lint": "eslint \"src/**/*.ts\" --fix",
