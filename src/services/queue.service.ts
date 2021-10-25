@@ -38,16 +38,23 @@ const sendBatch = (queueName: string, query: Record<string, string>) => {
 const receive = async (queueName: string, query: Record<string, string>) => {
   const { MaxNumberOfMessages = '1', WaitTimeSeconds = '20' } = query;
 
-  await new Promise((resolve) =>
-    setTimeout(resolve, Number(WaitTimeSeconds) * 1000)
-  );
+  let count = 0;
+  do {
+    const messages = queueRepository
+      .get(queueName)
+      .messages.slice(0, Number(MaxNumberOfMessages));
 
-  const messages = queueRepository
-    .get(queueName)
-    .messages.slice(0, Number(MaxNumberOfMessages));
+    if (messages.length > 0) {
+      return {
+        Message: messages.map((message) => message.toOutput()),
+      };
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  } while (++count < Number(WaitTimeSeconds));
 
   return {
-    Message: messages.map((message) => message.toOutput()),
+    Message: [],
   };
 };
 
