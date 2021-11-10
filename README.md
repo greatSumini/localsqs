@@ -40,7 +40,30 @@ Built with ![fastify](https://img.shields.io/badge/fastify-%23000000.svg?logo=fa
 
 ## 1. Getting Started
 
-### 1.1. Run on your local device
+### 1.1. Using `docker`
+
+You can use the following command to get started with localsqs docker image
+
+```sh
+docker run --rm -it -p 4413:4413 greatsumini/localsqs
+```
+
+### 1.2. Using `docker-compose`
+
+You can also use the `docker-compose.yml` like this example
+
+```yml
+services:
+  localsqs:
+    container_name: localsqs
+    image: greatsumini/localsqs:0.2.0
+    ports:
+      - '4413:4413'
+```
+
+run `docker compose up` and Compose will start
+
+### 1.3. Run on your local device
 
 ```shell
 # clone this repository
