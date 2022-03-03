@@ -22,7 +22,7 @@
     "fastify-formbody": "5.2.0",
     "md5": "2.3.0",
     "object-to-xml": "2.0.0",
-    "pino-pretty": "7.5.1"
+    "pino-pretty": "7.5.3"
   },
   "devDependencies": {
     "@types/faker": "5.5.9",
