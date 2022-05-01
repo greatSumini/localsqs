@@ -19,7 +19,7 @@
   "dependencies": {
     "dotenv": "16.0.0",
     "fastify": "3.29.0",
-    "fastify-formbody": "5.2.0",
+    "fastify-formbody": "5.3.0",
     "md5": "2.3.0",
     "object-to-xml": "2.0.0",
     "pino-pretty": "7.6.1"
