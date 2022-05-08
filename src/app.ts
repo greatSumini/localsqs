@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
-import fastifyFormBody from 'fastify-formbody';
+import fastifyFormBody from '@fastify/formbody';
 import { Server, IncomingMessage, ServerResponse } from 'http';
 
 import router from './router';
