@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@fastify/formbody": "6.0.0",
+    "@fastify/formbody": "7.0.0",
     "dotenv": "16.0.0",
     "fastify": "3.29.0",
     "md5": "2.3.0",
