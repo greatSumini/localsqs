@@ -12,8 +12,13 @@ const fastify = Fastify({
   ignoreTrailingSlash: true,
   disableRequestLogging: true,
   logger: {
-    level: 'info',
-    prettyPrint: true,
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        translateTime: 'HH:MM:ss Z',
+        ignore: 'pid,hostname',
+      },
+    },
   },
 });
 
