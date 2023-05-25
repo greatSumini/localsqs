@@ -34,7 +34,7 @@
   </a>
 </p>
 
-Develop and test your server with Offline [AWS SQS](https://aws.amazon.com/sqs/)!
+Develop and test your server with In-memory [AWS SQS](https://aws.amazon.com/sqs/)!
 
 Built with ![fastify](https://img.shields.io/badge/fastify-%23000000.svg?logo=fastify&logoColor=white), ![typescript](https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white)
 
