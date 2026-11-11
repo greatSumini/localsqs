@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/faker": "5.5.9",
-    "@types/jest": "29.5.10",
+    "@types/jest": "29.5.14",
     "@types/md5": "2.3.5",
     "@types/node": "20.10.3",
     "@typescript-eslint/eslint-plugin": "5.62.0",
